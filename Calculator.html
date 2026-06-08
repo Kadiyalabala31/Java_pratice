@@ -1,0 +1,97 @@
+import java.awt.*; 
+importjava.awt.event.*; 
+import java.applet.*; 
+publicclassCalculatorextendsAppletimplementsActionListener 
+{ 
+doublev1,v2,result; 
+TextField t1; 
+Buttonb[]=newButton[10]; 
+Buttonadd,sub,mul,div,clear,mod,EQ; 
+char OP; public void init() 
+{ 
+setBackground(Color.white); 
+t1=new TextField(10); 
+GridLayoutgl=newGridLayout(6,3); 
+setLayout(gl); 
+for(inti=0;i<10;i++) 
+{ 
+b[i]=new Button(""+i); 
+} 
+add=new Button("+"); 
+sub=new Button("-"); 
+mul=new Button("*"); 
+div=new Button("/"); 
+mod=new Button("%"); 
+clear=newButton("clear"); 
+EQ=new Button("="); 
+t1.addActionListener(this); 
+add(t1); 
+for(inti=0;i<10;i++) 
+{ 
+Add(b[i]); 
+} 
+add(add); 
+add(sub); 
+add(mul); 
+add(div); 
+add(mod); 
+add(clear); 
+add(EQ); 
+for(inti=0;i<10;i++) 
+{ 
+b[i].addActionListener(this); 
+} 
+add.addActionListener(this); 
+sub.addActionListener(this); 
+mul.addActionListener(this); 
+div.addActionListener(this); 
+mod.addActionListener(this); 
+clear.addActionListener(this); 
+EQ.addActionListener(this); 
+} 
+publicvoidactionPerformed(ActionEventae) 
+{ 
+Stringstr=ae.getActionCommand(); 
+char ch=str.charAt(0); 
+if(Character.isDigit(ch))t1.setText(t1.getText()+str); 
+else if(str.equals("+")) 
+{ 
+v1=Integer.parseInt(t1.getText());OP='+';t1.setText(""); 
+} 
+elseif(str.equals("-")) 
+{ 
+v1=Integer.parseInt(t1.getText()); 
+OP=' -'; t1.setText(""); 
+} 
+elseif(str.equals("*")) 
+{ 
+v1=Integer.parseInt(t1.getText()); 
+OP='*'; 
+t1.setText(""); 
+} 
+elseif(str.equals("/")) 
+{ 
+v1=Integer.parseInt(t1.getText());OP='/'; 
+t1.setText(""); 
+} 
+elseif(str.equals("%")) 
+{ 
+v1=Integer.parseInt(t1.getText()); 
+OP='%'; t1.setText(""); 
+} 
+if(str.equals("=")) 
+{ 
+v2=Integer.parseInt(t1.getText()); 
+if(OP=='+') result=v1+v2; 
+else if(OP=='-') result=v1-v2; 
+else if(OP=='*') result=v1*v2; 
+else if(OP=='/') result=v1/v2; 
+elseif(OP=='%')result=v1%v2; 
+t1.setText(""+result); 
+} 
+if(str.equals("clear")) 
+{ 
+t1.setText("");
+}
+}
+}
