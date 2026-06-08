@@ -1,0 +1,265 @@
+JAVA ASSIGNMENT ANSWERS:-
+1. d)this
+2. d)none of the mentioned
+3. c)CTE
+4. d)0
+5. 
+6. c)CTE
+7. b)constructor called value of X=100
+8. c)20
+9. c)15 20 10 20
+10.b)4
+PROGRAMMING ANSWERS:-
+1.class Student:
+    def __init__(self, name="Unknown"):
+        self.name = name
+    def display_name(self):
+        print(f"Student Name: {self.name}")
+if __name__ == "__main__":
+    student1 = Student("Alice")
+    student1.display_name()
+    student2 = Student()
+    student2.display_name()
+2.class BankAccount:
+    def __init__(self, accountNumber, accountHolderName, balance=0.0):
+        self.accountNumber = accountNumber
+        self.accountHolderName = accountHolderName
+        self.balance = balance
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print(f"Deposited: ${amount:.2f}. New balance: ${self.balance:.2f}")
+        else:
+            print("Deposit amount must be positive.")
+    def withdraw(self, amount):
+        if 0 < amount <= self.balance:
+            self.balance -= amount
+            print(f"Withdrew: ${amount:.2f}. New balance: ${self.balance:.2f}")
+        else:
+            print("Withdrawal amount must be positive and cannot exceed the current balance.")
+    def display_account_info(self):
+        print(f"Account Number: {self.accountNumber}")
+        print(f"Account Holder Name: {self.accountHolderName}")
+        print(f"Balance: ${self.balance:.2f}")
+if __name__ == "__main__":
+    account1 = BankAccount("123456", "Alice Smith")
+    account1.display_account_info()
+    account1.deposit(1000)
+    account1.withdraw(500)
+    account1.display_account_info()
+    account2 = BankAccount("789012", "Bob Johnson", 500.0)
+    account2.display_account_info()
+3.class Library:
+    def __init__(self, libraryName, location=None):
+        self.libraryName = libraryName
+        self.location = location if location else "Unknown"
+        self.books = {}
+        self.books_lent = 0
+    def add_book(self, title, quantity):
+        if title in self.books:
+            self.books[title] += quantity
+        else:
+            self.books[title] = quantity
+    def lend_book(self, title):
+        if title in self.books and self.books[title] > 0:
+            self.books[title] -= 1
+            self.books_lent += 1
+            print(f"{title} lent successfully.")
+        else:
+            print(f"{title} is not available for lending.")
+    def display_details(self):
+        print(f"Library Name: {self.libraryName}")
+        print(f"Location: {self.location}")
+        print(f"Total Books: {sum(self.books.values())}")
+        print(f"Books Lent: {self.books_lent}")
+        print(f"Remaining Books: {sum(quantity for quantity in self.books.values())}")
+if __name__ == "__main__":
+    library = Library("City Library", "Downtown")
+    library.add_book("Python Programming", 5)
+    library.add_book("Data Structures", 3)
+    library.lend_book("Python Programming")
+    library.display_details()
+4.class Student:
+    def __init__(self, name, rollNumber, department=None, semester=None):
+        self.name = name
+        self.rollNumber = rollNumber
+        self.department = department
+        self.semester = semester
+    def calculate_gpa(self, grades):
+        if not grades:
+            return 0.0
+        return sum(grades) / len(grades)
+    def display_info(self):
+        print(f"Name: {self.name}")
+        print(f"Roll Number: {self.rollNumber}")
+        if self.department:
+            print(f"Department: {self.department}")
+        if self.semester:
+            print(f"Semester: {self.semester}")
+if __name__ == "__main__":
+    student1 = Student("Alice", "S123", "Computer Science", 2)
+    student1.display_info()
+    gpa = student1.calculate_gpa([3.5, 4.0, 3.8])
+    print(f"GPA: {gpa:.2f}")
+5.class Course:
+    def __init__(self, courseCode, courseName, department=None, credits=0):
+        self.courseCode = courseCode
+        self.courseName = courseName
+        self.department = department
+        self.credits = credits
+    def display_info(self):
+        print(f"Course Code: {self.courseCode}")
+        print(f"Course Name: {self.courseName}")
+        if self.department:
+            print(f"Department: {self.department}")
+        print(f"Credits: {self.credits}")
+def calculate_total_credits(courses, department_name):
+    total_credits = sum(course.credits for course in courses if course.department == department_name)
+    return total_credits
+if __name__ == "__main__":
+    course1 = Course("CS101", "Introduction to Computer Science", "Computer Science", 3)
+    course2 = Course("CS102", "Data Structures", "Computer Science", 4)
+    course3 = Course("MAT101", "Calculus I", "Mathematics", 3)
+    course1.display_info()
+    total_credits_cs = calculate_total_credits([course1, course2, course3], "Computer Science")
+    print(f"Total Credits for Computer Science Department: {total_credits_cs}")
+6.class Employee:
+    def __init__(self, name, employeeId, designation=None, salary=0.0):
+        self.name = name
+        self.employeeId = employeeId
+        self.designation = designation
+        self.salary = salary
+    def calculate_bonus(self):
+        return self.salary * 0.10  # 10% bonus
+    def display_info(self):
+        print(f"Name: {self.name}")
+        print(f"Employee ID: {self.employeeId}")
+        if self.designation:
+            print(f"Designation: {self.designation}")
+        print(f"Salary: ${self.salary:.2f}")
+        print(f"Bonus: ${self.calculate_bonus():.2f}")
+if __name__ == "__main__":
+    employee1 = Employee("Alice Smith", "E001", "Software Engineer", 80000)
+    employee1.display_info()
+    employee2 = Employee("Bob Johnson", "E002", salary=60000)
+    employee2.display_info()
+7.class Display:
+    def __init__(self):
+        self.a = 0
+        self.b = 0
+        self.c = 0
+    def Accept(self):
+        self.a = int(input("Enter the first number (a): "))
+        self.b = int(input("Enter the second number (b): "))
+    def Max(self):
+        self.c = max(self.a, self.b)
+        print(f"The greater of {self.a} and {self.b} is: {self.c}")
+    def Min(self):
+        self.c = min(self.a, self.b)
+        print(f"The smaller of {self.a} and {self.b} is: {self.c}")
+    def Diff(self):
+        self.c = abs(self.a - self.b)
+        print(f"The difference between {self.a} and {self.b} is: {self.c}")
+if __name__ == "__main__":
+    calculator = Display()
+    calculator.Accept()
+    calculator.Max()
+    calculator.Min()
+    calculator.Diff()
+8.class Course:
+    def __init__(self, courseCode, courseName, department=None, credits=0):
+        self.courseCode = courseCode
+        self.courseName = courseName
+        self.department = department if department else "General"
+        self.credits = credits
+    def display_info(self):
+        print(f"Course Code: {self.courseCode}")
+        print(f"Course Name: {self.courseName}")
+        print(f"Department: {self.department}")
+        print(f"Credits: {self.credits}")
+def calculate_total_credits(courses, department_name):
+    total_credits = sum(course.credits for course in courses if course.department == department_name)
+    return total_credits
+if __name__ == "__main__":
+    # Create a list of courses
+    course1 = Course("CS101", "Introduction to Computer Science", "Computer Science", 3)
+    course2 = Course("CS102", "Data Structures", "Computer Science", 4)
+    course3 = Course("MAT101", "Calculus I", "Mathematics", 3)
+    course4 = Course("BIO101", "Biology", credits=2)  # Default department is "General"
+    courses = [course1, course2, course3, course4]
+    for course in courses:
+        course.display_info()
+        print()  # Add a newline for better readability
+    total_credits_cs = calculate_total_credits(courses, "Computer Science")
+    print(f"Total Credits for Computer Science Department: {total_credits_cs}")
+9.def main():
+    char1 = input("Enter the first character: ")
+    char2 = input("Enter the second character: ")
+    if len(char1) != 1 or len(char2) != 1:
+        print("Please enter exactly one character for each input.")
+        return
+    ascii1 = ord(char1)
+    ascii2 = ord(char2)
+    ascii_sum = ascii1 + ascii2
+    ascii_diff = abs(ascii1 - ascii2)
+    print(f"The sum of ASCII values = {ascii_sum}")
+    print(f"The difference of ASCII values = {ascii_diff}")
+if __name__ == "__main__":
+    main()
+10.class Finder:
+    def findMax(self, n1, n2, n3=None):
+        if n3 is not None:
+            return max(n1, n2, n3)
+        else:
+            return max(n1, n2)
+if __name__ == "__main__":
+    finder = Finder()
+    max_two = finder.findMax(10, 20)
+    print(f"The maximum of 10 and 20 is: {max_two}")
+    max_three = finder.findMax(10, 20, 15)
+    print(f"The maximum of 10, 20, and 15 is: {max_three}")
+11.import random
+class Game:
+    def __init__(self):
+        self.players = []
+    def accept_player_details(self):
+        for i in range(2):
+            name = input(f"Enter the name of player {i + 1}: ")
+            self.players.append({"name": name, "score": 0, "throws": 0})
+    def play_game(self):
+        for player in self.players:
+            while player["score"] < 20:
+                throw = random.randint(1, 6)  # Simulate throwing a dice
+                player["score"] += throw
+                player["throws"] += 1
+                print(f"{player['name']} threw a {throw}. Total score: {player['score']}")
+    def display_result(self):
+        winner = min(self.players, key=lambda p: (p["score"] < 20, p["throws"]))
+        print("\nGame Over!")
+        for player in self.players:
+            print(f"{player['name']} - Final Score: {player['score']}, Throws: {player['throws']}")
+        print(f"Winner: {winner['name']} with {winner['throws']} throws!")
+if __name__ == "__main__":
+    game = Game()
+    game.accept_player_details()
+    game.play_game()
+    game.display_result()
+12.class ParkingLot:
+    def __init__(self):
+        self.vno = input("Enter vehicle number: ")
+        self.hours = int(input("Enter number of hours parked: "))
+        self.bill = 0.0
+    def calculate(self):
+        if self.hours <= 1:
+            self.bill = 30  # Fixed charge for the first hour
+        else:
+            self.bill = 30 + (self.hours - 1) * 1.50  # Charge for additional hours
+        return self.bill
+    def display_info(self):
+        print(f"Vehicle Number: {self.vno}")
+        print(f"Hours Parked: {self.hours}")
+        print(f"Total Bill: Rs.{self.bill:.2f}")
+if __name__ == "__main__":
+    parking_lot = ParkingLot()
+    parking_lot.calculate()
+    parking_lot.display_info()
